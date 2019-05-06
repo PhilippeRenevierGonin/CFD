@@ -1,5 +1,8 @@
-# .properties
+# .properties (mdp dedans)
 **/*.properties
+# .pdf (objectif de ce programme)
+**/dossiers/*.pdf
+**/driver
 
 # Compiled class file
 *.class

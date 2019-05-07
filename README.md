@@ -1,5 +1,6 @@
 # CFD
-téléchargement de campus france, pour windows ou linux, avec Java, Selenium et Chrome (74)
+téléchargement de campus france, pour windows ou linux ou macos, avec Java, Selenium et Chrome (74)
+Essayé pour l'instant uniquement sur windows 10.
 
 ## Utilisation : 
    * il faut régler la recherche sur le site campus france / pastel
@@ -8,7 +9,7 @@ téléchargement de campus france, pour windows ou linux, avec Java, Selenium et
   cf.login=...
   cf.mdp=***
   cf.nom=NOM_Prenom
-  cf.OS=WIN (WIN ou LINUX)
+  cf.OS=WIN (WIN ou LINUX ou MACOS)
   ```
   * exécuter le programme, en ligne de commande : 
      * mvn clean package

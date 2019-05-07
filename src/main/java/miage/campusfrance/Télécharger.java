@@ -34,7 +34,10 @@ public class Télécharger implements QuitListener {
         if (OS.equals("WIN")) {
             return "https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip";
         }
-        else {
+        else if (OS.equals("MACOS")) {
+            return "https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_mac64.zip";
+        }
+        else{
             return "https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip";
         }
     }
@@ -79,7 +82,7 @@ public class Télécharger implements QuitListener {
             Messages.messageErreur("cf.login=...");
             Messages.messageErreur("cf.mdp=...");
             Messages.messageErreur("cf.nom=NOM_Prenom");
-            Messages.messageErreur("cf.OS=WIN ou LINUX");
+            Messages.messageErreur("cf.OS=WIN ou LINUX ou MACOS");
             System.exit(-1);
 
         }

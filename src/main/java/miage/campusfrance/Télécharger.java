@@ -216,6 +216,8 @@ public class Télécharger implements QuitListener {
         for(int i = 0; i < listeTr.size(); i++) {
             WebElement nom = listeTr.get(i).findElement(By.cssSelector("td:nth-of-type(5)"));
             noms[i] = nom.getText();
+            WebElement numdossier = listeTr.get(i).findElement(By.cssSelector("td:nth-of-type(3)"));
+            noms[i] = noms[i] + numdossier.getText();
             WebElement lienDossier = listeTr.get(i).findElement(By.cssSelector("td:nth-of-type(10) > a"));
             liens[i]= lienDossier.getAttribute("href");
 

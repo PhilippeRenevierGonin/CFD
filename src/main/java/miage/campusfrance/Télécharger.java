@@ -3,6 +3,8 @@ package miage.campusfrance;
 
 import miage.campusfrance.cf.Messages;
 import miage.campusfrance.cf.QuitListener;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -108,6 +110,17 @@ public class Télécharger implements QuitListener {
         Messages.addQuitListener(this);
 
         verifDir("dossiers");
+
+        // nettoyage en cas d'interruption
+        File directory = new File("dossiers");
+        // d'abord avec extension
+        Collection<File> anciensTéléchargement = FileUtils.listFiles(directory, new WildcardFileFilter("dossiers"+File.separator+"dossier_"+this.nom+"_*.*"), null);
+        for(File f : anciensTéléchargement) f.delete();
+        // puis sans extension (fichier partiel ?)
+        anciensTéléchargement = FileUtils.listFiles(directory, new WildcardFileFilter("dossiers"+File.separator+"dossier_"+this.nom+"_*"), null);
+        for(File f : anciensTéléchargement) f.delete();
+
+
         verifDir("driver");
 
         File driver = new File("driver"+File.separator+"chromedriver.exe");  // .exe...
@@ -165,7 +178,7 @@ public class Télécharger implements QuitListener {
 
 
 
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "driver"+ File.separator+getWebDriverName());
         Map<String, Object> prefs = new HashMap<String, Object>();
         prefs.put("download.default_directory",   System.getProperty("user.dir")+File.separator+"dossiers" + File.separator );
         ChromeOptions options = new ChromeOptions();
